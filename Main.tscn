@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://ch45suk8lpu28"]
+
+[ext_resource type="PackedScene" uid="uid://c0qh3j20bvi3s" path="res://scenes/player/Player.tscn" id="1_glv2v"]
+
+[sub_resource type="Environment" id="Environment_uu6xs"]
+background_mode = 1
+background_color = Color(0.6807065, 0.66593635, 0.5258874, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.5960745, 0.58101994, 0.42974648, 1)
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r0du0"]
+size = Vector3(20, 1, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_glv2v"]
+albedo_color = Color(0.35037288, 0.6106706, 0.24305403, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_glv2v"]
+size = Vector3(20, 1, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uu6xs"]
+albedo_color = Color(0.46229076, 0.46229059, 0.4622904, 1)
+
+[node name="Main" type="Node3D" unique_id=109452212]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=85900192]
+environment = SubResource("Environment_uu6xs")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1748503167]
+transform = Transform3D(0.7071068, -0.5, 0.5, 0, 0.7071068, 0.70710677, -0.7071068, -0.5, 0.5, 0, 4.838814, 0)
+light_color = Color(0.64837575, 0.6276667, 0.7533968, 1)
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1291869075]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1432769800]
+shape = SubResource("BoxShape3D_r0du0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1015462783]
+material_override = SubResource("StandardMaterial3D_glv2v")
+mesh = SubResource("BoxMesh_glv2v")
+
+[node name="Player" parent="." unique_id=1990779521 instance=ExtResource("1_glv2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5174868, 13.951184)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=997409234]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62533855, 2.8313365, 0)
+use_collision = true
+size = Vector3(14.08374, 4.884506, 1)
+material = SubResource("StandardMaterial3D_uu6xs")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGBox3D" unique_id=570917083]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.12513375, -0.84453154, 0.003071189)
+operation = 2
+radius = 1.987
+height = 2.065
+sides = 24

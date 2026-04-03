@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c0qh3j20bvi3s"]
+
+[ext_resource type="Script" uid="uid://btk2m6cjmmuin" path="res://scripts/player/player_controller.gd" id="1_wr5hl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o8nba"]
+radius = 0.35
+height = 1.0
+
+[node name="Player" type="CharacterBody3D" unique_id=1990779521]
+script = ExtResource("1_wr5hl")
+walk_speed = 4.0
+sprint_speed = 7.0
+acceleration = 40.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1061593935]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5271299, 0)
+shape = SubResource("CapsuleShape3D_o8nba")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=2017066210]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=438282632]
+
+[node name="ViewModelRoot" type="Node3D" parent="CameraPivot" unique_id=1589949014]
