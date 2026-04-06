@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bwe1ms7dey1i0"]
+
+[ext_resource type="Script" uid="uid://qcbgjdba8bx4" path="res://scripts/world/target_dummy.gd" id="1_p08sj"]
+[ext_resource type="Script" uid="uid://cy8k5p7kj0ulk" path="res://scripts/systems/health_component.gd" id="2_um5c7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ss7cu"]
+radius = 0.45
+height = 1.2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_e4mx4"]
+radius = 0.45
+height = 1.2
+
+[node name="TargetDummy" type="StaticBody3D" unique_id=571695164]
+script = ExtResource("1_p08sj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2136099425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CapsuleShape3D_ss7cu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=581243560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+mesh = SubResource("CapsuleMesh_e4mx4")
+
+[node name="Health" type="Node" parent="." unique_id=455789763]
+script = ExtResource("2_um5c7")

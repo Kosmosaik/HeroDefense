@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c0qh3j20bvi3s"]
 
 [ext_resource type="Script" uid="uid://btk2m6cjmmuin" path="res://scripts/player/player_controller.gd" id="1_wr5hl"]
+[ext_resource type="PackedScene" uid="uid://p1u2pqia16ic" path="res://scenes/weapons/WeaponHitscan.tscn" id="2_gfjak"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o8nba"]
 radius = 0.35
@@ -22,3 +23,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=438282632]
 
 [node name="ViewModelRoot" type="Node3D" parent="CameraPivot" unique_id=1589949014]
+
+[node name="Weapon_Hitscan" parent="CameraPivot/ViewModelRoot" unique_id=585094640 instance=ExtResource("2_gfjak")]

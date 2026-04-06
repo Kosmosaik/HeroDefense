@@ -15,13 +15,16 @@ extends CharacterBody3D
 
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var camera: Camera3D = $CameraPivot/Camera3D
+@onready var view_model_root: Node3D = $CameraPivot/ViewModelRoot
 
 var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var _pitch_radians: float = 0.0
+var _active_weapon: WeaponHitscan = null
 
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	_cache_active_weapon()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -40,6 +43,7 @@ func _physics_process(delta: float) -> void:
 	_apply_gravity(delta)
 	_handle_jump()
 	_handle_movement(delta)
+	_update_weapon_input()
 	move_and_slide()
 
 
@@ -98,8 +102,32 @@ func _handle_movement(delta: float) -> void:
 	velocity.z = move_toward(velocity.z, target_velocity.z, current_acceleration * delta)
 
 
+func _update_weapon_input() -> void:
+	if _active_weapon == null:
+		return
+
+	var mouse_captured := Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
+
+	_active_weapon.set_trigger_held(mouse_captured and Input.is_action_pressed("shoot"))
+
+	if mouse_captured and Input.is_action_just_pressed("shoot"):
+		_active_weapon.queue_single_shot()
+
+
+func _cache_active_weapon() -> void:
+	_active_weapon = null
+
+	for child in view_model_root.get_children():
+		if child is WeaponHitscan:
+			_active_weapon = child
+			_active_weapon.setup(self, camera)
+			return
+
+
 func _toggle_mouse_capture() -> void:
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		if _active_weapon != null:
+			_active_weapon.set_trigger_held(false)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

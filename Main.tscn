@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ch45suk8lpu28"]
 
 [ext_resource type="PackedScene" uid="uid://c0qh3j20bvi3s" path="res://scenes/player/Player.tscn" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://bwe1ms7dey1i0" path="res://scenes/world/TargetDummy.tscn" id="2_uu6xs"]
 
 [sub_resource type="Environment" id="Environment_uu6xs"]
 background_mode = 1
@@ -54,3 +55,12 @@ operation = 2
 radius = 1.987
 height = 2.065
 sides = 24
+
+[node name="TargetDummy" parent="." unique_id=571695164 instance=ExtResource("2_uu6xs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -10)
+
+[node name="TargetDummy2" parent="." unique_id=1826046286 instance=ExtResource("2_uu6xs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6458416, 1, -10)
+
+[node name="TargetDummy3" parent="." unique_id=935650785 instance=ExtResource("2_uu6xs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5927415, 1, -10)
