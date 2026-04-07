@@ -55,21 +55,21 @@ func take_damage(
 
 
 func _on_damaged(
-	previous_health: float,
-	current_health: float,
-	amount: float,
-	instigator: Node,
-	hit_position: Vector3,
-	hit_normal: Vector3
+	_previous_health: float,
+	_current_health: float,
+	_amount: float,
+	_instigator: Node,
+	_hit_position: Vector3,
+	_hit_normal: Vector3
 ) -> void:
 	_hurt_flash_timer = hurt_flash_duration
 	_set_color(hurt_color)
 
 
 func _on_died(
-	instigator: Node,
-	hit_position: Vector3,
-	hit_normal: Vector3
+	_instigator: Node,
+	_hit_position: Vector3,
+	_hit_normal: Vector3
 ) -> void:
 	_is_destroyed = true
 	_set_color(dead_color)

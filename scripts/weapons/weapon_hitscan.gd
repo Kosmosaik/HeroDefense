@@ -26,8 +26,8 @@ var _queued_single_shot: bool = false
 var _cooldown_remaining: float = 0.0
 
 
-func setup(owner: Node, camera: Camera3D) -> void:
-	_owner = owner
+func setup(weapon_owner: Node, camera: Camera3D) -> void:
+	_owner = weapon_owner
 	_camera = camera
 
 

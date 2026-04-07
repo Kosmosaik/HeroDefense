@@ -51,5 +51,5 @@ func clear_center_message() -> void:
 	set_center_message("")
 
 
-func set_restart_hint_visible(is_visible: bool) -> void:
-	restart_label.visible = is_visible
+func set_restart_hint_visible(visible_state: bool) -> void:
+	restart_label.visible = visible_state

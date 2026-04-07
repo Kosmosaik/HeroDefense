@@ -179,17 +179,17 @@ func _on_health_damaged(
 	previous_health: float,
 	current_health: float,
 	amount: float,
-	instigator: Node,
-	hit_position: Vector3,
-	hit_normal: Vector3
+	_instigator: Node,
+	_hit_position: Vector3,
+	_hit_normal: Vector3
 ) -> void:
 	damaged.emit(previous_health, current_health, amount)
 
 
 func _on_health_died(
-	instigator: Node,
-	hit_position: Vector3,
-	hit_normal: Vector3
+	_instigator: Node,
+	_hit_position: Vector3,
+	_hit_normal: Vector3
 ) -> void:
 	_is_dead = true
 	velocity = Vector3.ZERO

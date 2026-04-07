@@ -113,13 +113,13 @@ func _on_wave_progress_changed(
 	total_waves: int,
 	alive_enemies: int,
 	remaining_to_spawn: int,
-	total_enemies: int
+	_total_enemies: int
 ) -> void:
 	hud.set_wave_info(wave, total_waves)
 	hud.set_enemy_info(alive_enemies, remaining_to_spawn)
 
 
-func _on_wave_cleared(wave: int, total_waves: int) -> void:
+func _on_wave_cleared(wave: int, _total_waves: int) -> void:
 	if _run_state != RunState.ACTIVE:
 		return
 
@@ -127,7 +127,7 @@ func _on_wave_cleared(wave: int, total_waves: int) -> void:
 	hud.set_enemy_info(0, 0)
 
 
-func _on_run_completed(total_waves: int) -> void:
+func _on_run_completed(_total_waves: int) -> void:
 	if _run_state != RunState.ACTIVE:
 		return
 

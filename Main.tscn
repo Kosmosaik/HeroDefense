@@ -119,5 +119,7 @@ script = ExtResource("4_fos0i")
 enemy_scene = ExtResource("4_cm0pq")
 spawn_points_root = NodePath("../EnemySpawns")
 enemies_parent = NodePath("../EnemyRuntime")
+first_wave_delay = 3.0
+starting_enemy_count = 6
 
 [node name="HUD" parent="." unique_id=1584276739 instance=ExtResource("6_3dxm6")]
