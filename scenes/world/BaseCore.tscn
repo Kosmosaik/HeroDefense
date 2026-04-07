@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://61f1wghkub8f"]
+
+[ext_resource type="Script" uid="uid://ne6l85evb67y" path="res://scripts/world/base_core.gd" id="1_h1mlt"]
+[ext_resource type="Script" uid="uid://cy8k5p7kj0ulk" path="res://scripts/systems/health_component.gd" id="2_kcd6k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h1mlt"]
+size = Vector3(3, 2, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h1mlt"]
+size = Vector3(3, 2, 3)
+
+[node name="BaseCore" type="StaticBody3D" unique_id=986466766]
+script = ExtResource("1_h1mlt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1948008605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_h1mlt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=937437546]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_h1mlt")
+
+[node name="TargetPoint" type="Marker3D" parent="." unique_id=610429859]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -2)
+
+[node name="Health" type="Node" parent="." unique_id=717571647]
+script = ExtResource("2_kcd6k")
+max_health = 300.0

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://btk2m6cjmmuin" path="res://scripts/player/player_controller.gd" id="1_wr5hl"]
 [ext_resource type="PackedScene" uid="uid://p1u2pqia16ic" path="res://scenes/weapons/WeaponHitscan.tscn" id="2_gfjak"]
+[ext_resource type="Script" uid="uid://cy8k5p7kj0ulk" path="res://scripts/systems/health_component.gd" id="3_4kuee"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o8nba"]
 radius = 0.35
@@ -25,3 +26,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 [node name="ViewModelRoot" type="Node3D" parent="CameraPivot" unique_id=1589949014]
 
 [node name="Weapon_Hitscan" parent="CameraPivot/ViewModelRoot" unique_id=585094640 instance=ExtResource("2_gfjak")]
+
+[node name="Health" type="Node" parent="." unique_id=1872249931]
+script = ExtResource("3_4kuee")

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dexptkpymtql8"]
+
+[ext_resource type="Script" uid="uid://b67aw25wkebor" path="res://scripts/enemies/enemy_basic.gd" id="1_vwoa5"]
+[ext_resource type="Script" uid="uid://cy8k5p7kj0ulk" path="res://scripts/systems/health_component.gd" id="2_b88b2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vwoa5"]
+radius = 0.45
+height = 1.6
+
+[sub_resource type="BoxMesh" id="BoxMesh_hmulq"]
+size = Vector3(0.9, 1.6, 0.9)
+
+[node name="EnemyBasic" type="CharacterBody3D" unique_id=796391200]
+script = ExtResource("1_vwoa5")
+player_detection_radius = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=132537137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CapsuleShape3D_vwoa5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=935528368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+mesh = SubResource("BoxMesh_hmulq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1592427534]
+
+[node name="AttackOrigin" type="Marker3D" parent="." unique_id=44511343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0.55)
+
+[node name="Health" type="Node" parent="." unique_id=1320971186]
+script = ExtResource("2_b88b2")
+max_health = 70.0
