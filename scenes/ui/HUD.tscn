@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://mtfd6k2w7k8"]
+
+[ext_resource type="Script" uid="uid://brmx441ngs4e3" path="res://scripts/ui/prototype_hud.gd" id="1_kw0id"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1584276739]
+script = ExtResource("1_kw0id")
+
+[node name="TopLeft" type="Control" parent="." unique_id=388251754]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 420.0
+offset_bottom = 240.0
+
+[node name="MarginContainer" type="MarginContainer" parent="TopLeft" unique_id=1663966629]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TopLeft/MarginContainer" unique_id=1646614278]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="TopLeft/MarginContainer/VBoxContainer" unique_id=1654623297]
+custom_minimum_size = Vector2(280, 20)
+layout_mode = 2
+value = 100.0
+show_percentage = false
+
+[node name="PlayerHealthLabel" type="Label" parent="TopLeft/MarginContainer/VBoxContainer" unique_id=1876309991]
+layout_mode = 2
+text = "HP: 100 / 100"
+
+[node name="BaseHealthBar" type="ProgressBar" parent="TopLeft/MarginContainer/VBoxContainer" unique_id=627569341]
+custom_minimum_size = Vector2(280, 20)
+layout_mode = 2
+max_value = 300.0
+value = 300.0
+show_percentage = false
+
+[node name="BaseHealthLabel" type="Label" parent="TopLeft/MarginContainer/VBoxContainer" unique_id=2031806633]
+layout_mode = 2
+text = "Base HP: 300 / 300"
+
+[node name="WaveLabel" type="Label" parent="TopLeft/MarginContainer/VBoxContainer" unique_id=567042775]
+layout_mode = 2
+text = "Wave: 0 / 0"
+
+[node name="EnemiesLabel" type="Label" parent="TopLeft/MarginContainer/VBoxContainer" unique_id=1982590000]
+layout_mode = 2
+text = "Enemies: 0 alive | 0 left to spawn"
+
+[node name="StatusLabel" type="Label" parent="TopLeft/MarginContainer/VBoxContainer" unique_id=1766464507]
+layout_mode = 2
+
+[node name="CenterMessage" type="CenterContainer" parent="." unique_id=811868052]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MessageLabel" type="Label" parent="CenterMessage" unique_id=1613643988]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BottomCenter" type="CenterContainer" parent="." unique_id=1411903891]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -52.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="RestartLabel" type="Label" parent="BottomCenter" unique_id=592040938]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Press R to restart"
+horizontal_alignment = 1

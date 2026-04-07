@@ -1,6 +1,7 @@
 extends Node
 class_name HealthComponent
 
+signal changed(current_health: float, max_health: float)
 signal damaged(previous_health: float, current_health: float, amount: float, instigator: Node, hit_position: Vector3, hit_normal: Vector3)
 signal healed(previous_health: float, current_health: float, amount: float)
 signal died(instigator: Node, hit_position: Vector3, hit_normal: Vector3)
@@ -17,10 +18,18 @@ func _ready() -> void:
 
 func reset_health() -> void:
 	current_health = max_health
+	changed.emit(current_health, max_health)
 
 
 func is_dead() -> bool:
 	return current_health <= 0.0
+
+
+func get_health_ratio() -> float:
+	if max_health <= 0.0:
+		return 0.0
+
+	return current_health / max_health
 
 
 func take_damage(
@@ -35,6 +44,7 @@ func take_damage(
 	var previous_health := current_health
 	current_health = max(current_health - amount, 0.0)
 
+	changed.emit(current_health, max_health)
 	damaged.emit(previous_health, current_health, amount, instigator, hit_position, hit_normal)
 
 	if current_health <= 0.0:
@@ -49,4 +59,5 @@ func heal(amount: float) -> void:
 	current_health = min(current_health + amount, max_health)
 
 	if current_health > previous_health:
+		changed.emit(current_health, max_health)
 		healed.emit(previous_health, current_health, current_health - previous_health)
